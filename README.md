@@ -2,23 +2,6 @@
 
 Manual and automated QA testing portfolio targeting [SauceDemo](https://www.saucedemo.com/).
 
-## Structure
-
-```
-QA-tester/
-├── Manual-Testing/          # Bug reports and evidence
-│   ├── Bug reports.xlsx     # Documented bugs with severity/steps
-│   └── Screenshots/         # Visual evidence for reported bugs
-└── Playwright Automation/   # E2E tests (TypeScript)
-    ├── pages/               # Page Object Model classes
-    │   ├── LoginPage.ts
-    │   ├── InventoryPage.ts
-    │   ├── CartPage.ts
-    │   ├── CheckoutPage.ts
-    │   └── CheckoutCompletePage.ts
-    └── tests/
-        └── login.spec.ts    # Full checkout flow test
-```
 
 ## Manual Testing
 
@@ -28,21 +11,6 @@ Bug reports tracked in `Bug reports.xlsx` with reproduction steps, expected/actu
 
 Page Object Model pattern with TypeScript. Tests cover login, add-to-cart, cart verification, checkout, and order completion.
 
-### Setup
-
-```bash
-cd "Playwright Automation"
-npm install
-npx playwright install
-```
-
-### Run Tests
-
-```bash
-npx playwright test                    # All browsers
-npx playwright test --project=chromium # Chrome only
-npx playwright show-report             # View HTML report
-```
 
 ### Tested Flow
 

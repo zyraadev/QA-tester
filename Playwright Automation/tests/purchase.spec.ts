@@ -4,7 +4,7 @@ import { InventoryPage } from '../pages/InventoryPage';
 import { CartPage } from '../pages/CartPage';
 import { CheckoutPage } from '../pages/CheckoutPage';
 import { CheckoutCompletePage } from '../pages/CheckoutCompletePage';
-
+import customer from '../test-data/customer.json';
 
 
 test('Valid user can log in successfully', async ({ page }) => {
@@ -28,16 +28,13 @@ test('Valid user can log in successfully', async ({ page }) => {
   await checkoutPage.clickCheckout();
 
 await checkoutPage.fillCustomerInformation(
-  'Zyra',
-  'Flores',
-  '4000'
+  customer.firstName,
+  customer.lastName,
+  customer.postalCode
 );
-
-
 
 await checkoutPage.continueCheckout();
 await checkoutPage.finishOrder();
-
 await checkoutCompletePage.verifyOrderSuccess();
 
 

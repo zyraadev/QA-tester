@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Wrong password",
+    "username": "standard_user",
+    "password": "wrong_password",
+    "expectedError": "Username and password do not match any user in this service"
+  },
+  {
+    "name": "Wrong username",
+    "username": "wrong_user",
+    "password": "secret_sauce",
+    "expectedError": "Username and password do not match any user in this service"
+  },
+  {
+    "name": "Wrong username and password",
+    "username": "wrong_user",
+    "password": "wrong_password",
+    "expectedError": "Username and password do not match any user in this service"
+  },
+  {
+    "name": "Empty username",
+    "username": "",
+    "password": "secret_sauce",
+    "expectedError": "Username is required"
+  },
+  {
+    "name": "Empty password",
+    "username": "standard_user",
+    "password": "",
+    "expectedError": "Password is required"
+  },
+  {
+    "name": "Empty username and password",
+    "username": "",
+    "password": "",
+    "expectedError": "Username is required"
+  }
+]

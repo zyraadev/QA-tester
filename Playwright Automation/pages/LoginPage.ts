@@ -13,11 +13,9 @@ export class LoginPage {
     await this.page.getByRole('button', { name: 'Login' }).click();
   }
 
-  async verifyLoginError() {
+  async verifyLoginError(expectedMessage: string) {
     await expect(
       this.page.locator('[data-test="error"]')
-    ).toContainText(
-      'Username and password do not match'
-    );
+    ).toContainText(expectedMessage);
   }
 }

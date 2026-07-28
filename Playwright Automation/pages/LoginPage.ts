@@ -1,4 +1,4 @@
-import { Page } from '@playwright/test';
+import { Page, expect } from '@playwright/test';
 
 export class LoginPage {
   constructor(private page: Page) {}
@@ -11,5 +11,13 @@ export class LoginPage {
     await this.page.getByPlaceholder('Username').fill(username);
     await this.page.getByPlaceholder('Password').fill(password);
     await this.page.getByRole('button', { name: 'Login' }).click();
+  }
+
+  async verifyLoginError() {
+    await expect(
+      this.page.locator('[data-test="error"]')
+    ).toContainText(
+      'Username and password do not match'
+    );
   }
 }

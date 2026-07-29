@@ -7,6 +7,7 @@ export class CartPage {
   readonly productName: Locator;
   readonly productPrice: Locator;
   readonly productQuantity: Locator;
+  readonly removeButton: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -15,6 +16,7 @@ export class CartPage {
     this.productName = page.locator('.inventory_item_name');
     this.productPrice = page.locator('.inventory_item_price');
     this.productQuantity = page.locator('.cart_quantity');
+    this.removeButton = page.locator('#remove-sauce-labs-backpack');
   }
 
   async verifyCartBadge(count: string) {
@@ -37,5 +39,19 @@ export class CartPage {
   async verifyProductQuantity(quantity: string) {
     await expect(this.productQuantity)
         .toHaveText(quantity);
-}
+  }
+
+  async removeProduct() {
+  await this.removeButton.click();
+  }
+
+  async verifyCartIsEmpty() {
+  await expect(this.cartBadge).not.toBeVisible();
+  }
+
+
+
+
+
+  
 }

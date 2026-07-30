@@ -36,7 +36,21 @@ export class InventoryPage {
   async sortByNameZA() {
   await this.sortDropdown.selectOption('za');
   }
-  
+
+  async sortByPriceLowHigh() {
+  await this.sortDropdown.selectOption('lohi');
+  } 
+
+  async getAllProductPrices() {
+  const prices = await this.page
+    .locator('.inventory_item_price')
+    .allTextContents();
+
+  return prices.map(price =>
+    Number(price.replace('$', ''))
+  );
+}
+
 
 
 

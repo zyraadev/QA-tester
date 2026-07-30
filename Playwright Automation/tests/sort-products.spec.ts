@@ -44,3 +44,26 @@ test('Products are sorted Z to A', async ({ page }) => {
   expect(actualProducts).toEqual(expectedProducts);
 
 });
+
+test('Products are sorted by price Low to High', async ({ page }) => {
+
+  const loginPage = new LoginPage(page);
+  const inventoryPage = new InventoryPage(page);
+
+  await loginPage.navigate();
+  await loginPage.login(
+    'standard_user',
+    'secret_sauce'
+  );
+
+  await inventoryPage.sortByPriceLowHigh();
+
+  const actualPrices =
+    await inventoryPage.getAllProductPrices();
+
+  const expectedPrices =
+    [...actualPrices].sort((a, b) => a - b);
+
+  expect(actualPrices).toEqual(expectedPrices);
+
+});

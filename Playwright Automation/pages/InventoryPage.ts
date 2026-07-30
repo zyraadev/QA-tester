@@ -5,12 +5,14 @@ export class InventoryPage {
   readonly pageTitle: Locator;
   readonly cartIcon: Locator;
   readonly addBackpackButton: Locator;
+  readonly sortDropdown: Locator;
 
   constructor(page: Page) {
     this.page = page;
     this.pageTitle = page.locator('.title');
     this.cartIcon = page.locator('.shopping_cart_link');
     this.addBackpackButton = page.locator('#add-to-cart-sauce-labs-backpack');
+    this.sortDropdown = page.locator('.product_sort_container');
   }
 
   async verifyInventoryPage() {
@@ -19,5 +21,19 @@ export class InventoryPage {
   }
   async addBackpackToCart() {
   await this.addBackpackButton.click();
-}
+  }
+
+  async sortByNameAZ() {
+  await this.sortDropdown.selectOption('az');
+  }
+
+  async getAllProductNames() {
+  return await this.page
+    .locator('.inventory_item_name')
+    .allTextContents();
+  } 
+
+
+
+
 }

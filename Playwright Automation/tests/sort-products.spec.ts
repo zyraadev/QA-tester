@@ -21,3 +21,26 @@ test('Products are sorted A to Z', async ({ page }) => {
   expect(actualProducts).toEqual(expectedProducts);
 
 });
+
+test('Products are sorted Z to A', async ({ page }) => {
+
+  const loginPage = new LoginPage(page);
+  const inventoryPage = new InventoryPage(page);
+
+  await loginPage.navigate();
+  await loginPage.login(
+    'standard_user',
+    'secret_sauce'
+  );
+
+  await inventoryPage.sortByNameZA();
+
+  const actualProducts =
+    await inventoryPage.getAllProductNames();
+
+  const expectedProducts =
+    [...actualProducts].sort().reverse();
+
+  expect(actualProducts).toEqual(expectedProducts);
+
+});

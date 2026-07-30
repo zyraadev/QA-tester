@@ -33,6 +33,10 @@ export class InventoryPage {
     .allTextContents();
   } 
 
+  async sortByNameZA() {
+  await this.sortDropdown.selectOption('za');
+  }
+  
 
 
 

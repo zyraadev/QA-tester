@@ -51,6 +51,10 @@ export class InventoryPage {
   );
 }
 
+async sortByPriceHighLow() {
+  await this.sortDropdown.selectOption('hilo');
+}
+
 
 
 
